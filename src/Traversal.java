@@ -8,7 +8,7 @@ public class Traversal {
 
     root.right = new TreeNode(15, new TreeNode(-3), new TreeNode(5, null, new TreeNode(22)));
 
-    preOrder(root);
+    inOrder(root);
   }
 
   public static void preOrder(TreeNode current) {
@@ -17,7 +17,7 @@ public class Traversal {
     System.out.println(current.value);
     preOrder(current.left);
     preOrder(current.right);
-  }
+  } 
 
   public static void postOrder(TreeNode current) {
     if (current == null) return;
@@ -25,5 +25,13 @@ public class Traversal {
     postOrder(current.left);
     postOrder(current.right);
     System.out.println(current.value);
+  }
+
+  public static void inOrder(TreeNode current) {
+    if (current == null) return;
+
+    inOrder(current.left);
+    System.out.println(current.value);
+    inOrder(current.right);
   }
 }
