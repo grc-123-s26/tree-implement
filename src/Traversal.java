@@ -7,7 +7,7 @@ public class Traversal {
     root.left.right = new TreeNode(2);
 
     root.right = new TreeNode(15,
-                                    new TreeNode(3),
+                                    new TreeNode(-3),
                                     new TreeNode(5,
                                           null,
                                           new TreeNode(22)
@@ -15,7 +15,31 @@ public class Traversal {
                               );
     //preorder(root);
     //postorder(root);
-    inorder(root);
+    //inorder(root);
+    printUnderThreshold(root, 11);
+  }
+
+  public static int countNodes(TreeNode current) {
+    if (current == null) return 0;
+    // count left subtree
+    int leftCount = countNodes(current.left);
+    // count right subtree
+    int rightCount = countNodes(current.left);
+    // add one for the root
+    int totalCount = leftCount + rightCount + 1;
+    return totalCount;
+  }
+
+  // Print ALL nodes the tree that have data strickly less than the threshold
+  // nodes should be printed in pre-order
+  public static void printUnderThreshold(TreeNode current, int threshold) {
+    if (current == null) return;
+
+    if (current.value < threshold) {
+      System.out.println(current.value);
+    }
+    printUnderThreshold(current.left, threshold);
+    printUnderThreshold(current.right, threshold);
   }
 
   public static void preorder(TreeNode current) {
