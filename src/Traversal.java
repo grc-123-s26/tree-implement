@@ -16,7 +16,28 @@ public class Traversal {
 
     //preorder(root);
     // postorder(root);
-    inorder(root);
+    // inorder(root);
+    printUnderThreshold(root, 11);
+  }
+
+  public static int countNodes(TreeNode current) {
+if (current == null) return 0;
+int leftCount = countNodes(current.left);
+int rightCount = countNodes(current.right);
+int totalCount = leftCount + rightCount + 1;
+return totalCount;
+  }
+
+  // Print ALL nodes the tree that have data strictly less than the threshold
+  // nodes should be printed in pre-order
+  public static void printUnderThreshold(TreeNode current, int threshold) {
+    if(current == null) return;
+
+    if(current.value < threshold) {
+      System.out.println(current.value);
+    }
+      printUnderThreshold(current.left, threshold);
+      printUnderThreshold(current.right, threshold);
   }
 
   public static void preorder(TreeNode current) {
